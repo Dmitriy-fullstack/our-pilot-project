@@ -1,0 +1,63 @@
+$main-color: #242A37;
+$card-bg-color: #15395A;
+$hover-color: #00D7FF;
+$bg-color: #F2F3F7;
+$text-color: #282828;
+$secondary-text: #B9C3C8;
+$bold-text: #000000;
+$white-color: #FFFFFF;
+$button-color: #FF851C;
+$cancel-button: #24D40C;
+$delete-button: #DB0938;
+
+//Цвета категорий
+
+$family-color: #FFE6D3;
+$healt-color: #CDF7FF;
+$learning-color: #FFF6C0;
+$leisure-color: #F8D2FF;
+$work-color: #D3F6CE;
+$active-color: #B9C3C8;
+
+//Сбросы стилей
+
+%text-throw {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+%list-throw {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+%link-throw {
+  display: block;
+  text-decoration: none;
+}
+%button-throw {
+  outline: none;
+  border: none;
+  background-color: none;
+}
+%input-throw {
+  outline: none;
+}
+
+//Стили контейнера
+
+%container-styles {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (max-width: 767px) {
+    max-width: 450px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+  }
+}

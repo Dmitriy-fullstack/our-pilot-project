@@ -10,7 +10,11 @@ function MainPage() {
 
   return (
     <>
+      
+      <div className={s.container}>
       <h1>Главная страница</h1>
+      </div>
+      
     </>
   )
 }

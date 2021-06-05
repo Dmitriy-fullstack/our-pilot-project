@@ -1,22 +1,68 @@
-import { Route, Switch } from "react-router";
-import Main from "./views/Main";
-import Registration from "./views/Registration";
-import Authorization from "./views/Authorization";
-import Cabinet from "./views/Cabinet";
-import NotFoundView from "./views/NotFoundView";
+import { Suspense, lazy, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, Switch } from 'react-router-dom';
+import { CSSTransition } from "react-transition-group";
 
-const App = () => {
+import { authOperations, authSelectors, globalSelectors} from './redux';
+
+import routes from './routes';
+import { PrivatRoute, PublicRoute } from './components/Routes';
+import { Notification, LoaderSpinner } from './components';
+
+import scaleTransitions from './scss/transitions/scale.module.scss';
+// import './App.css';
+
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const MainPage = lazy(() => import('./pages/MainPage'));
+
+// import logo from './logo.svg';
+
+function App() {
+  const isAuthenticated = useSelector(authSelectors.getIsAuthenticated);
+  const notification = useSelector(globalSelectors.getNotificationText);
+  const token = useSelector(authSelectors.getToken);
+
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(authOperations.getCurrentUser());
+  // }, [dispatch]);
+
   return (
     <>
-      <Switch>
-        <Route exact path="/" component={Main} />
-        <Route path="/registration" component={Registration} />
-        <Route path="/authorization" component={Authorization} />
-        <Route path="/cabinet" component={Cabinet} />
-        <Route component={NotFoundView} />
-      </Switch>
+      <CSSTransition
+        in={!!notification}
+        appear={true}
+        classNames={scaleTransitions}
+        timeout={200}
+        unmountOnExit
+      >					
+        <Notification />
+      </CSSTransition>
+
+      <Suspense fallback={<LoaderSpinner/>}>
+        <Switch>
+          <PublicRoute
+            path={routes.login} 
+            isAuthenticated={isAuthenticated}
+            redirectTo={routes.main}
+          >
+            <LoginPage />
+          </PublicRoute>
+
+          <PrivatRoute
+            path={routes.main} exact
+            isAuthenticated={token}
+            redirectTo={routes.login}
+          >
+            <MainPage />
+          </PrivatRoute>
+
+          <Redirect to={routes.main} />
+        </Switch>
+      </Suspense>
     </>
   );
-};
+}
 
 export default App;

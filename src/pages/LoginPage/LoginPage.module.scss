@@ -1,0 +1,28 @@
+@import '../../scss/variables';
+@import '../../scss/global-styles';
+
+.container {
+  @extend %container-styles;
+}
+
+.input {
+  @extend %input;
+
+  font-family: HelveticaNeueCyr;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 18px;
+
+  &:first-child {
+    margin-bottom: 20px;
+  }
+
+  width: 100%;
+}
+
+.button {
+  @extend %button;
+  display: block;
+  margin: 23px auto 0 auto;
+}

@@ -1,4 +1,46 @@
 //Сбросы стилей
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: HelveticaNeueCyr, Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background-color: $bg-color;
+  padding: 0;
+  margin: 0 auto;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
 
 %text-throw {
   margin-top: 0;
@@ -32,6 +74,7 @@
   background-color: $button-color;
   box-shadow: $button-shadow;
 }
+
 %input {
   display: block;
   color: $hover-color;
@@ -43,17 +86,21 @@
 //Стили контейнера
 
 %container-styles {
-  padding-left: 15px;
-  padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
-  @media screen and (max-width: 767px) {
-    max-width: 450px;
+  padding-left: 15px;
+  padding-right: 15px;
+  @media (min-width: 320px) {
+    width: 320px;
   }
-  @media screen and (min-width: 768px) {
+  @media (min-width: 768px) {
     width: 768px;
+    padding-left: 49px;
+    padding-right: 49px;
   }
-  @media screen and (min-width: 1280px) {
+  @media (min-width: 1280px) {
     width: 1280px;
+    padding-left: 72px;
+    padding-right: 72px;
   }
 }

@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'HelveticaNeueCyr';
+  font-weight: 300;
+  src: local('Poppins'), url(./fonts/HelveticaNeueCyr-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeueCyr';
+  font-weight: 400;
+  src: local('HelveticaNeueCyr'), url(./fonts/HelveticaNeueCyr-Roman.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeueCyr';
+  font-weight: 700;
+  src: local('HelveticaNeueCyr'), url(./fonts/HelveticaNeueCyr-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeueCyr';
+  font-weight: 900;
+  src: local('HelveticaNeueCyr'), url(./fonts/HelveticaNeueCyr-Black.ttf) format('truetype');
+}

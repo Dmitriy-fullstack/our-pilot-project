@@ -1,0 +1,100 @@
+@import '../../scss/variables';
+@import '../../scss/global-styles';
+
+.wrapper {
+  background-color: $main-color;
+}
+
+.container {
+  @extend %container-styles;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding-top: 21px;
+  padding-bottom: 21px;
+
+  @media (min-width: 768px) {
+    padding-top: 27px;
+    padding-bottom: 27px;
+    justify-content: space-between;
+  }
+}
+
+.title {
+  font-family: HelveticaNeueCyr;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+
+  letter-spacing: 0.02em;
+  color: #00D7FF;
+
+  @media (min-width: 768px) {
+    font-size: 21px;
+    line-height: 21px;
+  }
+}
+
+.first_letter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: 154px;
+  font-family: HelveticaNeueCyr;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17px;
+  line-height: 16px;
+
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+
+  background-color: #3E4E6C;
+  border-radius: 50%;
+  height: 29px;
+  width: 30px;
+
+  @media (min-width: 768px) {
+    margin-left: 0;
+  }
+}
+
+.title_name {
+  display: flex;
+  align-items: center;
+}
+
+.email {
+  display: none;
+  visibility:hidden;
+  @media (min-width: 768px) {
+    display: inline;
+    visibility: visible;
+    font-family: HelveticaNeueCyr;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 17px;
+
+    letter-spacing: 0.02em;
+    color: #7B8AA4;
+  }
+}
+
+.btn {
+  background-color: unset;
+}
+
+.icon_logout {
+  height: 16px;
+  width: 22px;
+  transition: 0.5s;
+
+  &:hover {
+    fill: $button-color;
+  }
+}

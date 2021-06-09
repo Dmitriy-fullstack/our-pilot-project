@@ -14,8 +14,11 @@ export default function Header() {
     const dispatch = useDispatch();
     const email = useSelector(authSelectors.getUserEmail);
 
-    let nameFromEmail = email.split("@")[0];
-    let firstLetter = email.slice(0, 1).toUpperCase();
+    
+        // const nameFromEmail = email.split("@", 1);
+        // const firstLetter = email.slice(0, 1).toUpperCase();
+     
+ 
 
 
     const onLogOut = useCallback(() => {
@@ -28,9 +31,9 @@ export default function Header() {
                 <div className={styles.header}>
                     <span className={styles.title}>Questify</span>
                     <div className={styles.title_name}>
-                        <p className={styles.first_letter}>{firstLetter}</p>
+                        <p className={styles.first_letter}>a</p>
                         <p className={styles.email}>
-                            {nameFromEmail}'s Quest Log
+                            {email}'s Quest Log
                         </p>
                     </div>
                     <button

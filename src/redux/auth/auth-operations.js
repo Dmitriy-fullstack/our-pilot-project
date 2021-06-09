@@ -1,42 +1,42 @@
-import axios from 'axios';
+import axios from "axios";
 
-import { authActions, cardsActions, globalActions } from '../';
+import { authActions, cardsActions, globalActions } from "../";
 
-axios.defaults.baseURL = 'https://questify-backend.goit.global/'
+axios.defaults.baseURL = "https://questify-backend.goit.global/";
 
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = '';
-  }
-}
+    axios.defaults.headers.common.Authorization = "";
+  },
+};
 
-const register = credentials => async dispatch => {
+const register = (credentials) => async (dispatch) => {
   dispatch(authActions.registerRequest());
 
   try {
-    const { data } = await axios.post('/auth/register', credentials);
+    const { data } = await axios.post("/auth/register", credentials);
     dispatch(login(credentials));
     dispatch(authActions.registerSuccess(data));
   } catch (error) {
     // console.log('error.response.status', error.response.status);
-    if (error.response.status === 409) {
-      dispatch(login(credentials));
-      return;
-    }
+    // if (error.response.status === 409) {
+    //   dispatch(login(credentials));
+    //   return;
+    // }
     dispatch(authActions.registerError(error.message));
-    dispatch(globalActions.createNotificationText('Registration error'));
+    dispatch(globalActions.createNotificationText("Registration error"));
   }
-}
+};
 
-const login = (user) => async dispatch => {
+const login = (user) => async (dispatch) => {
   dispatch(authActions.loginRequest());
 
   try {
-    const { data } = await axios.post('/auth/login', user);
-    console.log('data', data);
+    const { data } = await axios.post("/auth/login", user);
+    console.log("data", data);
     token.set(data.accessToken);
     dispatch(cardsActions.getAllCardsSuccess(data.userData));
     dispatch(authActions.loginSuccess(data));
@@ -44,19 +44,19 @@ const login = (user) => async dispatch => {
     dispatch(authActions.loginError(error.message));
     dispatch(globalActions.createNotificationText(error.response.data.message));
   }
-}
+};
 
-const logout = () => async dispatch => {
+const logout = () => async (dispatch) => {
   dispatch(authActions.logoutRequest());
 
   try {
-    await axios.post('/auth/logout');
+    await axios.post("/auth/logout");
     token.unset();
     dispatch(authActions.logoutSuccess(null));
   } catch (error) {
-    dispatch(authActions.logoutError(error.message))
+    dispatch(authActions.logoutError(error.message));
   }
-}
+};
 
 // const getCurrentUser = () => async (dispatch, getState) => {
 //   const {

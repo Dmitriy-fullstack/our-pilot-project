@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { cardsActions } from '../';
+import { cardsActions, authActions } from '../';
 
 const addCard = (newCard) => async dispatch => {
   
@@ -65,8 +65,10 @@ const getAllCards = () => async dispatch => {
   try {
     const { data: { card } } = await axios.get(`/card`);
 
+    dispatch(authActions.validUserSuccess());
     dispatch(cardsActions.getAllCardsSuccess(card))
   } catch (error) {
+    dispatch(authActions.validUserError());
     dispatch(cardsActions.getAllCardsError(error.message));
   }
 };

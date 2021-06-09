@@ -18,9 +18,9 @@ import {
 } from '.';
 
 const authPersistConfig = {
-  key: 'token',
+  key: 'user',
   storage,
-  whitelist: ['accessToken', 'refreshToken']
+  whitelist: ['accessToken', 'refreshToken', 'user']
 }
 
 

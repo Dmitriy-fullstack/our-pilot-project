@@ -14,11 +14,20 @@ export default function Header() {
     const dispatch = useDispatch();
     const email = useSelector(authSelectors.getUserEmail);
 
+
     
         // const nameFromEmail = email.split("@", 1);
         // const firstLetter = email.slice(0, 1).toUpperCase();
      
  
+
+    let nameFromEmail = '';
+    let firstLetter = '';
+    if (email) {
+      nameFromEmail = email.split("@")[0];
+      firstLetter = email.slice(0, 1).toUpperCase();
+    }
+
 
 
     const onLogOut = useCallback(() => {
@@ -44,6 +53,7 @@ export default function Header() {
                         <Icons
                             name='logout'
                             color='#3E4E6C'
+                            size='22'
                             className={styles.icon_logout}
                         />
                     </button>

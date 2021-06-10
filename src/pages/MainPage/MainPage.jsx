@@ -9,16 +9,16 @@ import Modal from '../../components/Modal'
 import {Header, Card} from '../../components';
 
 
-  function MainPage() {
+  // function MainPage() {
     
-    return (
-      <>      
-    <Header />
-    <div className={s.container}>
-      <h1>Главная страница</h1>
-      <button>Модалка</button>
-      <Modal isOpen={false} />
-    </div>
+  //   return (
+  //     <>      
+  //   <Header />
+  //   <div className={s.container}>
+  //     <h1>Главная страница</h1>
+  //     <button>Модалка</button>
+  //     <Modal isOpen={false} />
+  //   </div>
        
 
 function MainPage() {

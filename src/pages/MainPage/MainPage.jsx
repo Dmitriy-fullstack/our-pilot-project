@@ -1,34 +1,36 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { cardsSelectors } from '../../redux';
 
 import s from './MainPage.module.scss';
-import Modal from '../../components/Modal'
 
-import {Header, Card} from '../../components';
-
-
-  function MainPage() {
-    
-    return (
-      <>      
-    <Header />
-    <div className={s.container}>
-      <h1>Главная страница</h1>
-      <button>Модалка</button>
-      <Modal isOpen={false} />
-    </div>
-       
+import { Header, Card, Icons, CompletedCard } from '../../components';
 
 function MainPage() {
+
+  const [todayCard, setTodayCard] = useState([]);
+
   const cards = useSelector(cardsSelectors.getAllCards);
+  
+
+  //---------------------------------------------
+
+  //---------onCreateCard-----------
+  const onCreateCard = () => {
+
+  }
 
   return (
     <>
-
       <Header />
       <div className={s.container}>
+        <div>
+          <h2>TODAY</h2>
+          <ul>
+            {}
+          </ul>
+        </div>
       </div>
       
       <Card
@@ -41,14 +43,17 @@ function MainPage() {
         id='sdflsdmfklsdfsd123'
       />
 
-      
+      <CompletedCard
+        title='Test test test test test'
+        type='Task'
+      />
 
+      <button className={s.button} type="button" onClick={onCreateCard}>
+        <Icons name='plus' size='15' color='white' />
+      </button>
 
     </>
-    )
-  }
-    
-  
+  )
+}
 
-
-export default MainPage
+export default MainPage;

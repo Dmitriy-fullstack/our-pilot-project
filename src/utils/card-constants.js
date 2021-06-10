@@ -23,10 +23,4 @@ const cardType = {
   CHALLENGE: 'Challenge',
 }
 
-const challengeCardTitle = {
-  NEW: 'Create New CHALLENGE',
-  IDLE: 'Challenge',
-  EDIT: 'edit challenge',
-}
-
-export { cardDifficulty, cardStatus, cardCategory, cardType, challengeCardTitle };
+export { cardDifficulty, cardStatus, cardCategory, cardType };

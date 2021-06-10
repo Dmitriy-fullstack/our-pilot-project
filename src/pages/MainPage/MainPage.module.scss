@@ -1,22 +1,27 @@
 @import '../../scss/variables';
-
+@import '../../scss/global-styles';
 
 .container {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: $bg-color;
-    @media screen and (max-width: 767px) {
-        max-width: 450px;
-    }
-    @media screen and (min-width: 768px) {
-        max-width: 768px;
-    }
-    @media screen and (min-width: 1280px) {
-        max-width: 1280px;
-    }
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $bg-color;
+  @media screen and (max-width: 767px) {
+      max-width: 450px;
+  }
+  @media screen and (min-width: 768px) {
+      max-width: 768px;
+  }
+  @media screen and (min-width: 1280px) {
+      max-width: 1280px;
+  }
 }
 
-@import '../../scss/global-styles';
+.button {
+  @extend %button;
+  position: fixed;
+  right: 15px;
+  bottom: 50px;
+}
 

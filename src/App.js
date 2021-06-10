@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Switch } from 'react-router-dom';
 import { CSSTransition } from "react-transition-group";
 
-import { authOperations, cardsOperations, authSelectors, globalSelectors} from './redux';
+import { cardsOperations, authSelectors, globalSelectors} from './redux';
 
 import routes from './routes';
 import { PrivatRoute, PublicRoute } from './components/Routes';

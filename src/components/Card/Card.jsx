@@ -3,10 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import {
   cardDifficulty,
-  cardStatus,
   cardCategory,
   cardType,
-  challengeCardTitle,
 } from '../../utils/card-constants';
 
 import { Icons } from '../';

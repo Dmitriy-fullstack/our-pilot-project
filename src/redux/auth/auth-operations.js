@@ -21,11 +21,11 @@ const register = (credentials) => async (dispatch) => {
     dispatch(login(credentials));
     dispatch(authActions.registerSuccess(data));
   } catch (error) {
-    // console.log('error.response.status', error.response.status);
-    // if (error.response.status === 409) {
-    //   dispatch(login(credentials));
-    //   return;
-    // }
+    console.log("error.response.status", error.response.status);
+    if (error.response.status === 409) {
+      dispatch(login(credentials));
+      return;
+    }
     dispatch(authActions.registerError(error.message));
     dispatch(globalActions.createNotificationText("Registration error"));
   }

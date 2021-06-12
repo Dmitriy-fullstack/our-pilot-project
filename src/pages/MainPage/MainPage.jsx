@@ -12,15 +12,10 @@ function MainPage() {
 
   return (
     <>
-
-      
+      <Header />
       <div className={s.container}>
       <h1>Главная страница</h1>
       </div>
-      
-
-      <Header />
-
     </>
   )
 }

@@ -22,10 +22,10 @@ const register = credentials => async dispatch => {
     dispatch(authActions.registerSuccess(data));
   } catch (error) {
     // console.log('error.response.status', error.response.status);
-    if (error.response.status === 409) {
-      dispatch(login(credentials));
-      return;
-    }
+    // if (error.response.status === 409) {
+    //   dispatch(login(credentials));
+    //   return;
+    // }
     dispatch(authActions.registerError(error.message));
     dispatch(globalActions.createNotificationText('Registration error'));
   }
@@ -35,8 +35,10 @@ const login = (user) => async dispatch => {
   dispatch(authActions.loginRequest());
 
   try {
+
     const { data } = await axios.post('/auth/login', user);
     console.log('data', data);
+
     token.set(data.accessToken);
     dispatch(cardsActions.getAllCardsSuccess(data.userData));
     dispatch(authActions.loginSuccess(data));

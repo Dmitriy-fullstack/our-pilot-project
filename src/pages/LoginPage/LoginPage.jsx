@@ -5,7 +5,7 @@ import {
   authOperations,
 } from '../../redux';
 
-import Modal from '../../components/Modal'
+import AuthModal from '../../components/AuthModal'
 
 import s from './LoginPage.module.scss';
 
@@ -54,22 +54,22 @@ function LoginPage() {
   return (
     <div className={s.container}>
       <div className={s.modals}>
-        <Modal active={modalRegisterActive} setActive={setModalRegisterActive}>
+        <AuthModal active={modalRegisterActive} setActive={setModalRegisterActive}>
           <p className={s.modalPrompt}>Enter email and password for registration</p>
           <form className={s.form} type="submit" onSubmit={onSubmitRegister}>
             <input className={s.input} type="email" value={inputFields.email} name="email" onChange={onInputChange} autoFocus placeholder="Email" />
             <input className={s.input} type="password" value={inputFields.password} name="password" onChange={onInputChange} placeholder="Password" />
             <button className={s.button} type="submit">go!</button>
           </form>
-        </Modal>
-        <Modal active={modalLoginActive} setActive={setModalLoginActive}>
+        </AuthModal>
+        <AuthModal active={modalLoginActive} setActive={setModalLoginActive}>
           <p className={s.modalPrompt}>Enter email and password for login</p>
           <form className={s.form} type="submit" onSubmit={onSubmitLogin}>
             <input className={s.input} type="email" value={inputFields.email} name="email" onChange={onInputChange} autoFocus placeholder="Email" />
             <input className={s.input} type="password" value={inputFields.password} name="password" onChange={onInputChange} placeholder="Password" />
             <button className={s.button} type="submit">go!</button>
           </form>
-        </Modal>
+        </AuthModal>
       </div>
       <h1 className={s.title}>Questify</h1>
       <p className={s.description}>Questify will turn your life into
@@ -88,10 +88,10 @@ function LoginPage() {
         <input className={s.input} type="password" value={inputFields.password} name="password" onChange={onInputChange} placeholder="Password" />
         <button className={s.button} type="submit">go!</button>
       </form> */}
-      <img src={pic1} alt="back" className={s.back_first} />
+      {/* <img src={pic1} alt="back" className={s.back_first} />
       <img src={pic2} alt="back" className={s.back_second} />
       <img src={bgpic1} alt="back" className={s.bg_pic} />
-      <img src={bgpic2} alt="back" className={s.bg_pic} />
+      <img src={bgpic2} alt="back" className={s.bg_pic} /> */}
     </div>
   )
 }

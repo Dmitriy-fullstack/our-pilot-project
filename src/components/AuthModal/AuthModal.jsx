@@ -1,6 +1,6 @@
-import './Modal.scss';
+import './AuthModal.scss';
 
-const Modal = ({active, setActive, children}) => {
+const AuthModal = ({active, setActive, children}) => {
     return (
         <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
             <div className='content' onClick={e => e.stopPropagation()}>
@@ -10,4 +10,4 @@ const Modal = ({active, setActive, children}) => {
     )
 }
 
-export default Modal;
+export default AuthModal;

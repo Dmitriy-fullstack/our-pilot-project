@@ -9,10 +9,9 @@ import AuthModal from '../../components/AuthModal'
 
 import s from './LoginPage.module.scss';
 
-import pic1 from '../../images/pic1.png';
-import pic2 from '../../images/pic2.png';
-import bgpic1 from '../../images/bgpic1.png';
-import bgpic2 from '../../images/bgpic2.png';
+import bgMobile from '../../images/bg-mobile.png';
+import bgTablet from '../../images/bg-tablet.png';
+import bgDesctop from '../../images/bg-desctop.png'
 
 function LoginPage() {
   const [inputFields, setInputFields] = useState({email: '', password: ''});
@@ -88,10 +87,9 @@ function LoginPage() {
         <input className={s.input} type="password" value={inputFields.password} name="password" onChange={onInputChange} placeholder="Password" />
         <button className={s.button} type="submit">go!</button>
       </form> */}
-      {/* <img src={pic1} alt="back" className={s.back_first} />
-      <img src={pic2} alt="back" className={s.back_second} />
-      <img src={bgpic1} alt="back" className={s.bg_pic} />
-      <img src={bgpic2} alt="back" className={s.bg_pic} /> */}
+      <img src={bgTablet} alt="back" className={s.back_tablet} />
+      <img src={bgDesctop} alt="back" className={s.back_desc} />
+      <img src={bgMobile} alt="back" className={s.back_mob} />
     </div>
   )
 }

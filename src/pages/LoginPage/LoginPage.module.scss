@@ -7,7 +7,7 @@
   padding-top: 93px;
   background-color: #fff;
   overflow: hidden;
-  min-height: 648px;
+  height: 648px;
   z-index: 2;
 
   @media (min-width: 768px) {
@@ -21,7 +21,7 @@
     padding-left: 230px;
     padding-right: 485px;
     padding-top: 261px;
-    max-height: 850px;
+    height: 850px;
   }
 }
 
@@ -206,48 +206,42 @@
   }
 }
 
-.back_first {
-  z-index: 1;
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-  @media screen and (min-width: 768px) {
-    position: absolute;
-    top: -15%;
-    right: -58%;
-    pointer-events: none;
-  }
-  @media screen and (min-width: 1280px) {
-    top: -22%;
-    right: -28%;
-  }
-}
-
-.back_second {
-  z-index: 1;
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-  @media screen and (min-width: 768px) {
-    position: absolute;
-    bottom: -20%;
-    right: -45%;
-    pointer-events: none;
-  }
-  @media screen and (min-width: 1280px) {
-    top: 35%;
-    left: 58%;
-  }
-}
-
-.bg_pic {
-  position: absolute;
+.back_mob {
+  z-index: -1;
+  display: inline-block;
+  position: fixed;
   bottom: 0;
-
-  @media screen and (max-width: 767px) {
-    left: 0;
-  }
+  right: 0;
   @media screen and (min-width: 768px) {
     display: none;
+  }
+}
+
+.back_tablet {
+  z-index: -1;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+  @media screen and (min-width: 1279px) {
+    display: none;
+  }
+}
+
+.back_desc {
+  z-index: -1;
+  @media screen and (max-width: 1279px) {
+    display: none;
+  }
+  @media screen and (min-width: 1280px) {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    right: 0;
   }
 }

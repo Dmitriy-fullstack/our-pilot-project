@@ -36,6 +36,7 @@ function MainPage() {
           </ul>
         </div>
       </div>
+
       
       <Card
         title='This is TITLE'
@@ -57,7 +58,10 @@ function MainPage() {
         <Icons name='plus' size='15' color='white' />
       </button>
 
+
       
+
+
 
     </>
   )

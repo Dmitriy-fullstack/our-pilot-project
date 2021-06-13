@@ -46,6 +46,7 @@ function MainPage() {
           </ul>
         </div>
       </div>
+
       
       <Card
         title='This is TITLE'
@@ -65,6 +66,7 @@ function MainPage() {
       <button className={s.button} type="button" onClick={onCreateCard}>
         <Icons name='plus' size='15' color='white' />
       </button>
+
 
     </>
   )

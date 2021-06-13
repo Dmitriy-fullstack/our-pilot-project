@@ -35,14 +35,11 @@ const login = (user) => async (dispatch) => {
   dispatch(authActions.loginRequest());
 
   try {
-
-
-    const { data } = await axios.post('/auth/login', user);
-    console.log('data', data);
-
-
     const { data } = await axios.post("/auth/login", user);
     console.log("data", data);
+
+    // const { data } = await axios.post("/auth/login", user);
+    // console.log("data", data);
 
     token.set(data.accessToken);
     dispatch(cardsActions.getAllCardsSuccess(data.userData));

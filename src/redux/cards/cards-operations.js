@@ -1,6 +1,17 @@
 import axios from 'axios';
 
-import { cardsActions } from '../';
+import { cardsActions, authActions } from '../';
+
+axios.defaults.baseURL = 'https://questify-backend.goit.global/'
+
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  }
+}
 
 const addCard = (newCard) => async dispatch => {
   
@@ -59,14 +70,26 @@ const completeCard = ({ cardId }) => async dispatch => {
 
 // -------------------------------------------------------
 
-const getAllCards = () => async dispatch => {
+const getAllCards = () => async (dispatch, getState) => {
+  const {
+    auth: { accessToken: persistedToken },
+  } = getState();
+
+  if (!persistedToken) {
+    return;
+  }
+
+  token.set(persistedToken);
+  
   dispatch(cardsActions.getAllCardsRequest());
 
   try {
-    const { data: { card } } = await axios.get(`/card`);
+    const { data } = await axios.get(`/card`);
 
-    dispatch(cardsActions.getAllCardsSuccess(card))
+    dispatch(authActions.validUserSuccess());
+    dispatch(cardsActions.getAllCardsSuccess(data))
   } catch (error) {
+    dispatch(authActions.validUserError());
     dispatch(cardsActions.getAllCardsError(error.message));
   }
 };

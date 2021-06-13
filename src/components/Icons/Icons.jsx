@@ -1,10 +1,11 @@
-import React from 'react';
 import IconsSVG from '../../utils/symbol-defs.svg';
 
-function Icons({name, color, size, className}) {
+import s from './Icons.module.scss';
+
+function Icons({ name, size, color, className='noClass' }) {
 
   return(
-    <svg className={`icon icon-${name} ${className}`} fill={color} stroke={color} width={size} height={size}>
+    <svg className={s[className]} fill={color} stroke={color} width={size} height={size}>
       <use xlinkHref={`${IconsSVG}#icon-${name}`} />
     </svg>
   )

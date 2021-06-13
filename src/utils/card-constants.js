@@ -1,25 +1,26 @@
-const difficulty = {
+const cardDifficulty = {
   EASY: 'Easy',
   NORMAL: 'Normal',
   HARD: 'Hard',
 }
 
-const status = {
+const cardStatus = {
   INCOMPLETE: 'Incomplete',
   COMPLETE: 'Complete',
 }
 
-const category = {
+const cardCategory = {
   STUFF: 'Stuff',
   FAMILY: 'Family',
   HEALTH: 'Health',
   LEARNING: 'Learning',
   LEISURE: 'Leisure',
+  WORK: 'Work',
 }
 
-const type = {
+const cardType = {
   TASK: 'Task',
   CHALLENGE: 'Challenge',
 }
 
-export { difficulty, status, category, type };
+export { cardDifficulty, cardStatus, cardCategory, cardType };

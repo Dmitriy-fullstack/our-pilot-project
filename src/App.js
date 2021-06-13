@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Switch } from 'react-router-dom';
 import { CSSTransition } from "react-transition-group";
 
-import { authOperations, authSelectors, globalSelectors} from './redux';
+import { cardsOperations, authSelectors, globalSelectors} from './redux';
 
 import routes from './routes';
 import { PrivatRoute, PublicRoute } from './components/Routes';
@@ -22,11 +22,11 @@ function App() {
   const notification = useSelector(globalSelectors.getNotificationText);
   const token = useSelector(authSelectors.getToken);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(authOperations.getCurrentUser());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(cardsOperations.getAllCards());
+  }, [dispatch]);
 
   return (
     <>

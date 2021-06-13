@@ -8,6 +8,9 @@ const loginRequest = createAction('auth/loginRequest');
 const loginSuccess = createAction('auth/loginSuccess');
 const loginError = createAction('auth/loginError');
 
+const validUserSuccess = createAction('auth/validUserSuccess');
+const validUserError = createAction('auth/validUserError');
+
 const logoutRequest = createAction('auth/logoutRequest');
 const logoutSuccess = createAction('auth/logoutSuccess');
 const logoutError = createAction('auth/logoutError');
@@ -27,6 +30,8 @@ const authActions = {
   registerRequest,
   registerSuccess,
   registerError,
+  validUserSuccess,
+  validUserError,
   // getCurrentUserRequest,
   // getCurrentUserSuccess,
   // getCurrentUserError,

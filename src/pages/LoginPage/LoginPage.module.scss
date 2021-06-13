@@ -173,19 +173,24 @@
 .title {
   color: $hover-color;
   font-size: 24px;
-
+  margin-bottom: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
 
 
   @media (min-width: 768px) {
-    position: absolute;
-    right: 20px;
-    bottom: 25px;
-    margin: 0;
+    margin-bottom: 50px;
+    font-size: 20px;
+    line-height: 20px;
   }
 
   @media (min-width: 1280px) {
-    right: 15px;
-    bottom: 25px;
+    margin-bottom: 70px;
+    font-size: 24px;
+    line-height: 24px;
+    // right: 15px;
+    // bottom: 25px;
   }
 }
 

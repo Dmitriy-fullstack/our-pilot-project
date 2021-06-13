@@ -50,24 +50,7 @@ function LoginPage() {
     dispatch(authOperations.login(credentials))
   }, [inputFields, dispatch]);
 
-  return (
-
-    <div>
-      <div className={s.container}>
-        <h1 className={s.title}>Questify</h1>
-        <p>Questify will turn your life into
-        a thrilling game full of amazing
-        quests and exciting challenges.
-        </p>
-        <p>Choose your name to sign up or log in</p>
-      </div>
-      {/* <div className={s.container}>
-        <form type="submit" onSubmit={onSubmit}>
-          <input className={s.input} type="email" value={inputFields.email} name="email" onChange={onInputChange} autoFocus placeholder="Email" />
-          <input className={s.input} type="password" value={inputFields.password} name="password" onChange={onInputChange} placeholder="Password" />
-          <button className={s.button} type="submit">go!</button>
-        </form>
-      </div> */}
+  return (      
 
     <div className={s.container}>
       <div className={s.modals}>
@@ -110,7 +93,7 @@ function LoginPage() {
       <img src={bgMobile} alt="back" className={s.back_mob} />
 
       </div>
-  </div>
+  
   )
 }
 

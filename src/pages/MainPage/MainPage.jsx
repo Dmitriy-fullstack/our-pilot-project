@@ -5,7 +5,9 @@ import { cardsSelectors } from '../../redux';
 
 import s from './MainPage.module.scss';
 
-import { Header, Card, Icons, CompletedCard, DateTime } from '../../components';
+import { Header, Card, Icons, CompletedCard } from '../../components';
+import TextField from "@material-ui/core/TextField";
+import DateTime from '../../components/DataTime/DateTime'
 
 function MainPage() {
       
@@ -38,11 +40,12 @@ function MainPage() {
       <Card
         title='This is TITLE'
         difficulty='Hard'
-        dateTime={DateTime}
+  
         category='Family'
         status='Incomplete'
         type='Task'
         id='sdflsdmfklsdfsd123'
+        
       />
 
       <CompletedCard
@@ -53,6 +56,8 @@ function MainPage() {
       <button className={s.button} type="button" onClick={onCreateCard}>
         <Icons name='plus' size='15' color='white' />
       </button>
+
+      
 
     </>
   )

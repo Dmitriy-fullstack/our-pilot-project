@@ -3,6 +3,7 @@
 
 .container {
   @extend %container-styles;
+  
 }
 
 .input {
@@ -25,4 +26,10 @@
   @extend %button;
   display: block;
   margin: 23px auto 0 auto;
+}
+
+.title {
+  color: $hover-color;
+  font-size: 24px;
+
 }

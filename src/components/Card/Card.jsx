@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import TextField from "@material-ui/core/TextField";
+import DateTime from '../DataTime'
 
 import {
   cardDifficulty,
   cardCategory,
   cardType,
 } from '../../utils/card-constants';
+
 
 import { Icons } from '../';
   
@@ -178,13 +181,13 @@ function Card({ title, difficulty, date, time, category, type, id = null }) {
             </input>
           : <h3 className={s[`title${typeField}`]}>{titleField}</h3>}     
         
-        
-        <span className={s.dateTime}>
+        <DateTime />
+        {/* <span className={s.dateTime}>
           {dateTimeField}
           {id === currentCardId && <span className={s.iconContainer}>
               <Icons name='calendar' size='14' />
             </span>}
-        </span>
+        </span> */}
 
         <div className={s.footerContainer}>
           <button className={s[categoryField]} onClick={onCategoryClick}>
@@ -237,6 +240,7 @@ function Card({ title, difficulty, date, time, category, type, id = null }) {
 
         </div>
       </form>
+      
     </div>
   )
 }

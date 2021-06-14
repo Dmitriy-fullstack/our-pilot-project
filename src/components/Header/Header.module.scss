@@ -2,7 +2,14 @@
 @import '../../scss/global-styles';
 
 .wrapper {
+  display: flex;
+  align-items: center;
+  height: 60px;
   background-color: $main-color;
+
+  @media screen and (min-width: $tablet) {
+    height: 70px;
+  }
 }
 
 .container {
@@ -12,12 +19,8 @@
 .header {
   display: flex;
   align-items: center;
-  padding-top: 21px;
-  padding-bottom: 21px;
 
   @media (min-width: 768px) {
-    padding-top: 27px;
-    padding-bottom: 27px;
     justify-content: space-between;
   }
 }

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import { cardsSelectors, cardsActions } from '../../redux';
+import dateTime from '../../utils/date-time';
 import {
   cardDifficulty,
   cardCategory,
@@ -61,8 +62,8 @@ function MainPage() {
     title: '',
     difficulty: cardDifficulty.NORMAL,
     category: cardCategory.LEISURE,
-    date: '',
-    time: '',
+    date: `${(dateTime.currentDate).getFullYear()}-${((dateTime.currentDate).getMonth() + 1) < 10 && '0'}${(dateTime.currentDate).getMonth() + 1}-${(dateTime.currentDate).getDate()}`,
+    time: '12:00',
     type: cardType.TASK,
     status: cardStatus.INCOMPLETE,
     id: 'new',
@@ -80,53 +81,56 @@ function MainPage() {
     }
 
     dispatch(cardsActions.setCurrentCardId('new'));
-
     setIsNewCard(true);    
   }
 
   return (
-    <>
+    <div className={s.pageContainer}>
       <Header />
       <div className={s.container}>
-        <div>
-          {todayCards?.length > 0 && <h2 className={s.categoryTitle}>TODAY</h2>}
+        {(todayCards?.length > 0 || isNewCard) && <div>
+          <h2 className={s.categoryTitle}>TODAY</h2>
           <TransitionGroup component="ul" className={s.cardsList}>
             {isNewCard
               ? cardsList([newCard, ...todayCards])
               : cardsList(todayCards)}
           </TransitionGroup>
+        </div>}
 
-          {tomorrowCards?.length > 0 && <h2 className={s.categoryTitle}>TOMORROW</h2>}
+        {tomorrowCards?.length > 0 && <div>
+          <h2 className={s.categoryTitle}>TOMORROW</h2>
           <TransitionGroup component="ul" className={s.cardsList}>
             {cardsList(tomorrowCards)}
           </TransitionGroup>
+        </div>}
           
-          {otherCards?.length > 0 && <h2 className={s.categoryTitle}>OTHER DATES</h2>}
+        {otherCards?.length > 0 && <div>
+          <h2 className={s.categoryTitle}>OTHER DATES</h2>
           <TransitionGroup component="ul" className={s.cardsList}>
             {cardsList(otherCards)}
           </TransitionGroup>
+        </div>}
 
-          {completedCards?.length > 0 && <div className={s.completedCardsContainer} onClick={onCompletedShow}>
-            <h2 className={s.categoryTitle}>DONE</h2>
-            <div className={s.completedIcon}>
-              {isCompletedDisplayed
-                ? < Icons className="rotate180" name='polygon' size='12' />
-                : < Icons className="rotate90" name='polygon' size='12' />}
-            </div>
-            <div className={s.dashedLine}></div>
-          </div>}
-          
+        {completedCards?.length > 0 && <div className={s.completedCardsContainer} onClick={onCompletedShow}>
+          <h2 className={s.categoryTitle}>DONE</h2>
+          <div className={s.completedIcon}>
+            {isCompletedDisplayed
+              ? < Icons className="rotate180" name='polygon' size='12' />
+              : < Icons className="rotate90" name='polygon' size='12' />}
+          </div>
+          <div className={s.dashedLine}></div>
+
           <TransitionGroup component="ul" className={s.cardsList}>
             {isCompletedDisplayed && cardsList(completedCards)}
           </TransitionGroup>
-        </div>
+        </div>}
       </div>
       
       <button className={s.button} type="button" onClick={onCreateCard}>
         <Icons name='plus' size='15' color='white' />
       </button>
 
-    </>
+    </div>
   )
 }
 

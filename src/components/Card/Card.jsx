@@ -34,31 +34,33 @@ function Card({ title, difficulty, date, time, category, type, id }) {
 
   useEffect(() => {
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const [cardDate, cartTime] = dateTimeField.split('T');
+    const [cardDate, cardTime] = dateTimeField.split('T');
     let dateTimeString = '';
 
     if (type === cardType.CHALLENGE) {
       dateTimeString = 'by ';
     }
 
-
-    if (cardDate === dateTime.currentDate) {
-      dateTimeString += `Today, ${cartTime}`;
+    if (new Date(cardDate) > dateTime.yesterday && new Date(cardDate) <= new Date(dateTime.currentDate)) {
+      dateTimeString += `Today, ${cardTime}`;
       setDisplayedDateTime(dateTimeString);
       return;
     }
 
-    if (cardDate === dateTime.tomorrow) {
-      dateTimeString += `Tomorrow, ${cartTime}`;
+    if (new Date(cardDate) > dateTime.currentDate && new Date(cardDate) <= new Date(dateTime.tomorrow)) {
+      dateTimeString += `Tomorrow, ${cardTime}`;
       setDisplayedDateTime(dateTimeString);
       return;
     }
 
     if (new Date(cardDate) > new Date(dateTime.tomorrow) && new Date(cardDate) <= new Date(dateTime.week)) {
-      dateTimeString += `${daysOfWeek[new Date(cardDate).getDay()]}, ${cartTime}`;
+      dateTimeString += `${daysOfWeek[new Date(cardDate).getDay()]}, ${cardTime}`;
       setDisplayedDateTime(dateTimeString);
       return;
     }
+
+    dateTimeString += `${cardDate} ${cardTime}`;
+    setDisplayedDateTime(dateTimeString);
 
   }, [dateTimeField, type])
 

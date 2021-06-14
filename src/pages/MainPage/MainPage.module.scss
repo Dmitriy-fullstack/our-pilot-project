@@ -1,6 +1,11 @@
 @import '../../scss/variables';
 @import '../../scss/global-styles';
 
+.pageContainer {
+  min-height: 100vh;
+  background-color: $bg-color;
+}
+
 .container {
   @extend %container-styles;
   background-color: $bg-color;

@@ -1,3 +1,5 @@
+@import './variables';
+
 //Сбросы стилей
 html {
   box-sizing: border-box;
@@ -13,7 +15,7 @@ body {
   font-family: HelveticaNeueCyr, Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  
+  // background-color: $bg-color;
   padding: 0;
   margin: 0 auto;
 }
@@ -84,23 +86,51 @@ p {
 }
 
 //Стили контейнера
+
 %container-styles {
-  padding-left: 15px;
-  padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
-  // background-color: $bg-color;
-  @media screen and (max-width: 767px) {
-      max-width: 450px;
+  padding: 25px 15px;
+  width: 310px;
+
+  @media (min-width: $tablet) {
+    width: $tablet;
+    padding-left: 50px;
+    padding-right: 49px;
   }
-  @media screen and (min-width: 768px) {
-      max-width: 768px;
-      padding-left: 49px;
-      padding-right: 49px;
+  @media (min-width: $desktop) {
+    width: $desktop;
+    padding-left: 71px;
+    padding-right: 72px;
   }
-  @media screen and (min-width: 1280px) {
-      max-width: 1280px;
-      padding-left: 71px;
-      padding-right: 71px;
+}
+
+//Стили карточки
+
+%cardContainer {
+  position: relative;
+  margin: 0;
+  padding: 19px 21px;
+  box-sizing: border-box;
+  width: 290px;
+  height: 260px;
+  box-shadow: $card-shadow;
+  border-radius: 10px;
+
+  @media screen and (min-width: $tablet) {
+    width: 205px;
+    height: 199px;
   }
+}
+
+//---------wrapper-----------
+
+.wrapperTask {
+  @extend %cardContainer;
+  background: white;
+}
+
+.wrapperChallenge {
+  @extend %cardContainer;
+  background: $card-bg-color;
 }

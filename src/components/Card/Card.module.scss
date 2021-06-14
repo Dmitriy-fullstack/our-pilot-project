@@ -7,9 +7,14 @@
   justify-content: space-between;
 }
 
+.dateTimeContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 .dateTime {
   display: flex;
-  margin-top: 10px;
   align-items: center;
   justify-content: center;
 
@@ -22,8 +27,7 @@
   letter-spacing: 0.02em;
   text-align: center;
 
-  @media screen and (min-width: $desktop) {
-    margin-top: 12px;
+  @media screen and (min-width: $tablet) {
     font-size: 14px;
   }
 }
@@ -56,36 +60,14 @@
   bottom: 21px;
 }
 
+.btnCreate {
+  margin: 7px;
+  color: $hover-color;
+  background-color: transparent;
+}
+
 .active {
   color: $secondary-text;
-}
-
-//---------wrapper-----------
-
-%wrapperCard {
-  position: relative;
-  margin: 0 auto;
-  padding: 19px 21px;
-  box-sizing: border-box;
-  width: 290px;
-  height: 260px;
-  box-shadow: $card-shadow;
-  border-radius: 10px;
-
-  @media screen and (min-width: $tablet) {
-    width: 205px;
-    height: 199px;
-  }
-}
-
-.wrapperTask {
-  @extend %wrapperCard;
-  background: white;
-}
-
-.wrapperChallenge {
-  @extend %wrapperCard;
-  background: $card-bg-color;
 }
 
 //--------difficulty---------
@@ -146,7 +128,6 @@
   top: 50%;
   transform: translateY(-50%);
   left: -21px;
-  // min-width: 90px;
   min-height: 80px;
   background-color: white;
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.05), 3px 4px 4px rgba(21, 57, 90, 0.05);
@@ -172,7 +153,7 @@
 //----------title------------
 
 %title {
-  margin-top: 71px;
+  margin: 71px 0 0 0;
   font-family: HelveticaNeueCyr;
   font-style: normal;
   font-weight: bold;
@@ -201,20 +182,31 @@
   color: white;
 }
 
-.challengeTitle {
+.titleDescription {
   position: absolute;
-  top: 53px;
+  top: 63px;
   left: 0;
   width: 100%;
   color: $secondary-text;
+  font-family: HelveticaNeueCyr;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1;
   text-align: center;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 12px;
+  }
 }
 
 .inputTitle {
   @extend %title;
   @extend %input;
   width: 100%;
+  background-color: transparent;
 }
 
 //----------category------------

@@ -1,9 +1,9 @@
 @import '../../scss/variables';
 @import '../../scss/global-styles';
-@import '../Card/Card.module.scss';
+// @import '../Card/Card.module.scss';
 
 .container {
-  @extend %wrapperCard;
+  @extend %cardContainer;
   padding: 19px 17px 15px 17px;
 }
 
@@ -11,7 +11,14 @@
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  width: 100%;
+  height: 180px;
+
+  @media screen and (min-width: $tablet) {
+    height: 123px;
+  }
 }
+
 
 %complited {
   text-transform: uppercase;
@@ -51,7 +58,14 @@
   }
 }
 
+.btnIcon {
+  margin-left: 7px;
+}
+
 .btn {
-  // margin-left: auto;
-  // margin: 7px auto;
+  display: block;
+  align-items: center;
+  margin: 7px auto;
+  color: $secondary-text;
+  background-color: transparent;
 }

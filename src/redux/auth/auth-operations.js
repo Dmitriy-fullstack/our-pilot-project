@@ -21,8 +21,7 @@ const register = (credentials) => async (dispatch) => {
     dispatch(login(credentials));
     dispatch(authActions.registerSuccess(data));
   } catch (error) {
-    console.log("error.response.status", error.response.status);
-    if (error.response.status === 409) {
+    if (error.response?.status === 409) {
       dispatch(login(credentials));
       return;
     }
@@ -36,13 +35,8 @@ const login = (user) => async (dispatch) => {
 
   try {
     const { data } = await axios.post("/auth/login", user);
-    console.log("data", data);
-
-    // const { data } = await axios.post("/auth/login", user);
-    // console.log("data", data);
-
     token.set(data.accessToken);
-    dispatch(cardsActions.getAllCardsSuccess(data.userData));
+    dispatch(cardsActions.getAllCardsSuccess(data.userData.cards));
     dispatch(authActions.loginSuccess(data));
   } catch (error) {
     dispatch(authActions.loginError(error.message));
@@ -62,32 +56,10 @@ const logout = () => async (dispatch) => {
   }
 };
 
-// const getCurrentUser = () => async (dispatch, getState) => {
-//   const {
-//     auth: { token: persistedToken },
-//   } = getState();
-
-//   if (!persistedToken) {
-//     return;
-//   }
-
-//   token.set(persistedToken);
-
-//   dispatch(authActions.getCurrentUserRequest());
-
-//   try {
-//     const { data } = await axios.get('/auth/current');
-//     dispatch(authActions.getCurrentauthuccess(data));
-//   } catch (error) {
-//     dispatch(authActions.getCurrentUserError(error.message))
-//   }
-// }
-
 const authOperations = {
   register,
   login,
   logout,
-  // getCurrentUser
 };
 
 export default authOperations;

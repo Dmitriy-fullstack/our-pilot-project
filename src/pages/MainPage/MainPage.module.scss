@@ -1,21 +1,14 @@
 @import '../../scss/variables';
 @import '../../scss/global-styles';
 
-.container {
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-left: auto;
-  margin-right: auto;
+.pageContainer {
+  min-height: 100vh;
   background-color: $bg-color;
-  @media screen and (max-width: 767px) {
-      max-width: 450px;
-  }
-  @media screen and (min-width: 768px) {
-      max-width: 768px;
-  }
-  @media screen and (min-width: 1280px) {
-      max-width: 1280px;
-  }
+}
+
+.container {
+  @extend %container-styles;
+  background-color: $bg-color;
 }
 
 .button {
@@ -25,3 +18,66 @@
   bottom: 50px;
 }
 
+.categoryTitle {
+  margin: 30px 0 20px 0;
+  color: $text-color;
+  font-family: HelveticaNeueCyr;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.cardsList {
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content: space-between;
+  margin-bottom: -20px;
+  width: 100%;
+}
+
+.cardItem {
+  display: flex;
+  margin: 0 calc((100% - 290px) / 2) 20px calc((100% - 290px) / 2);
+
+  @media screen and (min-width: $tablet) {
+    margin: 0 27px 25px 0;
+
+    &:nth-child(3n + 3) {
+      margin: 0 0 25px 0;
+    }
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin: 0 28px 25px 0;
+
+    &:nth-child(3n + 3) {
+      margin: 0 28px 25px 0;
+    }
+
+    &:nth-child(5n + 5) {
+      margin: 0 0 25px 0;
+    }
+  }
+}
+
+.completedCardsContainer {
+  display: flex;
+  margin: 30px 0 20px 0;
+  align-items: center;
+
+  .categoryTitle {
+    margin: 0;
+  }
+}
+
+.completedIcon {
+  margin-left: 10px;
+}
+
+.dashedLine {
+  width: 100%;
+  height: 1px;
+  border: 1px dashed $secondary-text;
+}

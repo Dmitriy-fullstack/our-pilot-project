@@ -4,10 +4,12 @@ import { combineReducers } from 'redux';
 import cardsActions from './cards-actions';
 
 const cardsListReducer = createReducer([], {
-  [cardsActions.getAllCardsSuccess]: (_, { payload }) => payload.cards,
-  [cardsActions.addCardSuccess]: (state, { payload }) => [...state, payload],
-  [cardsActions.editCardSuccess]: (state, { payload }) => [...state.filter(({ id }) => id !== payload.id), payload],
+  [cardsActions.getAllCardsSuccess]: (_, { payload }) => payload.map(card => ({...card, id: card._id})),
+  [cardsActions.addCardSuccess]: (state, { payload }) => [...state, { ...payload, id: payload._id }],
+  [cardsActions.editCardSuccess]: (state, { payload }) => [...state.filter(({ id }) => id !== payload._id), { ...payload, id: payload._id }],
+  [cardsActions.completeCardSuccess]: (state, { payload }) => [...state.filter(({ id }) => id !== payload._id), { ...payload, id: payload._id }],
   [cardsActions.deleteCardSuccess]: (state, { payload }) => [...state.filter(({ id }) => id !== payload)],
+  [cardsActions.moveToCompletedSuccess]: (state, { payload }) => [{...state.find(({_id}) => _id === payload), notMoved: false}, ...state.filter(({ _id }) => _id !== payload)],
 })
 
 const loading = createReducer(false, {
@@ -25,7 +27,11 @@ const loading = createReducer(false, {
 
   [cardsActions.deleteCardRequest]: () => true,
   [cardsActions.deleteCardSuccess]: () => false,
-  [cardsActions.deleteCardError]: () => false
+  [cardsActions.deleteCardError]: () => false,
+
+  [cardsActions.completeCardRequest]: () => true,
+  [cardsActions.completeCardSuccess]: () => false,
+  [cardsActions.completeCardError]: () => false,
 })
 
 const errorReducer = createReducer(null, {
@@ -33,6 +39,7 @@ const errorReducer = createReducer(null, {
   [cardsActions.addCardError]: (_, error) => error,
   [cardsActions.editCardError]: (_, error) => error,
   [cardsActions.deleteCardError]: (_, error) => error,
+  [cardsActions.completeCardError]: (_, error) => error,
 })
 
 const currentCardIdReducer = createReducer(null, {

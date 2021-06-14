@@ -18,9 +18,10 @@ const addCard = (newCard) => async dispatch => {
   dispatch(cardsActions.addCardRequest());
 
   try {
-    const { data: { card } } = await axios.post('/card', { ...newCard });
+    const {data} = await axios.post('/card', { ...newCard });
 
-    dispatch(cardsActions.addCardSuccess(card))
+    dispatch(cardsActions.setCurrentCardId(null));
+    dispatch(cardsActions.addCardSuccess(data.createdCard));
   } catch (error) {
     dispatch(cardsActions.addCardError(error.message));
   }
@@ -32,9 +33,10 @@ const editCard = ({ cardId, cardsFields }) => async dispatch => {
   dispatch(cardsActions.editCardRequest());
 
   try {
-    const { data: { card } } = await axios.patch(`/card/${cardId}`, { ...cardsFields });
+    const {data} = await axios.patch(`/card/${cardId}`, { ...cardsFields });
 
-    dispatch(cardsActions.editCardSuccess(card))
+    dispatch(cardsActions.setCurrentCardId(null));
+    dispatch(cardsActions.editCardSuccess(data.editedCard))
   } catch (error) {
     dispatch(cardsActions.editCardError(error.message));
   }
@@ -48,6 +50,7 @@ const deleteCard = ({ cardId }) => async dispatch => {
   try {
     await axios.delete(`/card/${cardId}`);
 
+    dispatch(cardsActions.setCurrentCardId(null));
     dispatch(cardsActions.deleteCardSuccess(cardId))
   } catch (error) {
     dispatch(cardsActions.deleteCardError(error.message));
@@ -60,12 +63,24 @@ const completeCard = ({ cardId }) => async dispatch => {
   dispatch(cardsActions.completeCardRequest());
 
   try {
-    const { data: { card } } = await axios.patch(`/card/${cardId}/complete`);
+    const { data } = await axios.patch(`/card/complete/${cardId}`);
 
-    dispatch(cardsActions.editCardSuccess(card))
+    const completedCard = {
+      ...data.completedCard,
+      notMoved: true,
+    }
+
+    dispatch(cardsActions.setCurrentCardId(null));
+    dispatch(cardsActions.completeCardSuccess(completedCard))
   } catch (error) {
     dispatch(cardsActions.completeCardError(error.message));
   }
+};
+
+// -------------------------------------------------------
+
+const moveToCompleted = ({ cardId }) => async dispatch => {
+  dispatch(cardsActions.moveToCompletedSuccess(cardId))  
 };
 
 // -------------------------------------------------------
@@ -87,7 +102,7 @@ const getAllCards = () => async (dispatch, getState) => {
     const { data } = await axios.get(`/card`);
 
     dispatch(authActions.validUserSuccess());
-    dispatch(cardsActions.getAllCardsSuccess(data))
+    dispatch(cardsActions.getAllCardsSuccess(data.cards))
   } catch (error) {
     dispatch(authActions.validUserError());
     dispatch(cardsActions.getAllCardsError(error.message));
@@ -100,6 +115,7 @@ const cardsOperations = {
   deleteCard,
   completeCard,
   getAllCards,
+  moveToCompleted,
 }
 
 export default cardsOperations;

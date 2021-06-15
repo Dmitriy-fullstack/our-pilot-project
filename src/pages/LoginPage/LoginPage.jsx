@@ -39,6 +39,7 @@ function LoginPage() {
     dispatch(authOperations.register(credentials))
   }, [inputFields, dispatch]);
 
+
   const onSubmitLogin = useCallback(e => {
     e.preventDefault();
 
@@ -50,7 +51,7 @@ function LoginPage() {
     dispatch(authOperations.login(credentials))
   }, [inputFields, dispatch]);
 
-  return (      
+  return (
 
     <div className={s.container}>
       <div className={s.modals}>

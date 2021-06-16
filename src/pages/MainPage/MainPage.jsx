@@ -70,7 +70,7 @@ function MainPage() {
   };
 
   //-------onCompletedShow----------
-  const onCompletedShow = () => {
+  const onCompletedShow = event => {
     setIsCompletedDisplayed(state => !state);
   }
 
@@ -111,14 +111,16 @@ function MainPage() {
           </TransitionGroup>
         </div>}
 
-        {completedCards?.length > 0 && <div className={s.completedCardsContainer} onClick={onCompletedShow}>
-          <h2 className={s.categoryTitle}>DONE</h2>
-          <div className={s.completedIcon}>
-            {isCompletedDisplayed
-              ? < Icons className="rotate180" name='polygon' size='12' />
-              : < Icons className="rotate90" name='polygon' size='12' />}
+        {completedCards?.length > 0 && <div className={s.completedCardsContainer}>
+          <div className={s.separateLine} onClick={onCompletedShow}>
+            <h2 className={s.categoryTitle}>DONE</h2>
+            <div className={s.completedIcon}>
+              {isCompletedDisplayed
+                ? < Icons className="rotate180" name='polygon' size='12' />
+                : < Icons className="rotate90" name='polygon' size='12' />}
+            </div>
+            <div className={s.dashedLine}></div>
           </div>
-          <div className={s.dashedLine}></div>
 
           <TransitionGroup component="ul" className={s.cardsList}>
             {isCompletedDisplayed && cardsList(completedCards)}

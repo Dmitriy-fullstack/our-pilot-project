@@ -27,6 +27,7 @@ function Card({ title, difficulty, date, time, category, type, id }) {
 
   const [isDifficultyEdit, setIsDifficultyEdit] = useState(false);
   const [isCategoryEdit, setIsCategoryEdit] = useState(false);
+  const [isModalDeleteShow, setIsModalDeleteShow] = useState(false);
 
   const currentCardId = useSelector(cardsSelectors.getCurrentCardId);
 
@@ -62,7 +63,25 @@ function Card({ title, difficulty, date, time, category, type, id }) {
     dateTimeString += `${cardDate} ${cardTime}`;
     setDisplayedDateTime(dateTimeString);
 
-  }, [dateTimeField, type])
+  }, [dateTimeField, type]);
+
+  useEffect(() => {
+		const onKeyDown = event => {
+			if (event.code === 'Escape') {
+        setIsModalDeleteShow(false);
+        window.removeEventListener('keydown', onKeyDown);
+			}
+		};
+		
+    if (isModalDeleteShow && currentCardId === id) {
+      window.addEventListener('keydown', onKeyDown);
+    }
+
+    if (isModalDeleteShow && currentCardId !== id) {
+      window.removeEventListener('keydown', onKeyDown);
+      setIsModalDeleteShow(false);
+    }
+	}, [isModalDeleteShow, currentCardId, id]);
 
   //--------------------------------
   //--------------------------------
@@ -149,9 +168,7 @@ function Card({ title, difficulty, date, time, category, type, id }) {
   //----------onDelete------------
   const onDelete = event => {
     event.stopPropagation();
-    //Открытие модалки с подтверждением удаления
-    dispatch(cardsOperations.deleteCard({ cardId: id }));
-    // dispatch(cardsActions.setCurrentCardId(null));
+    setIsModalDeleteShow(true);
   }
 
   //---------onComplete-----------
@@ -187,6 +204,25 @@ function Card({ title, difficulty, date, time, category, type, id }) {
 
     dispatch(cardsOperations.addCard(card));
     // dispatch(cardsActions.setCurrentCardId(null));
+  }
+
+  //---------Modal Delete---------
+
+  //--------onCancelDelete--------
+  const onCancelDelete = () => {
+    setIsModalDeleteShow(false);
+  }
+
+  const onkBackdropClick = ({ target, currentTarget }) => {
+		if (target === currentTarget) {
+			setIsModalDeleteShow(false);
+		}
+	}
+
+  //--------onAgreeDelete---------
+  const onAgreeDelete = () => {
+    dispatch(cardsOperations.deleteCard({ cardId: id }));
+    setIsModalDeleteShow(false);
   }
 
   return (
@@ -309,6 +345,17 @@ function Card({ title, difficulty, date, time, category, type, id }) {
           </div>}
 
       </div>
+
+
+      {isModalDeleteShow && <div className={s.modalOverlay} onClick={onkBackdropClick}>
+        <div className={s.modalContainer}>
+          <p className={s.modalTitle}>{`Delete this ${type === cardType.TASK ? 'Quest' : 'Challenge'}?`}</p>
+          <div className={s.btnContainer}>
+            <button className={s.btnCancel} onClick={onCancelDelete}>CANCEL</button>
+            <button className={s.btnDelete} onClick={onAgreeDelete}>DELETE</button>
+          </div>
+        </div>
+      </div>}
     </div>
   )
 }

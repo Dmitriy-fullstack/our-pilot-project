@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import s from './Modal.module.scss';
+import s from '../../components/Modal/index';
 
 function Modal({onClose, children}) {
 

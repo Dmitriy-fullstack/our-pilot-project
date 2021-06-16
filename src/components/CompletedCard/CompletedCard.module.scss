@@ -1,0 +1,71 @@
+@import '../../scss/variables';
+@import '../../scss/global-styles';
+// @import '../Card/Card.module.scss';
+
+.container {
+  @extend %cardContainer;
+  padding: 19px 17px 15px 17px;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+  height: 180px;
+
+  @media screen and (min-width: $tablet) {
+    height: 123px;
+  }
+}
+
+
+%complited {
+  text-transform: uppercase;
+  font-family: HelveticaNeueCyr;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 11px;
+  }
+}
+
+.complitedTask {
+  @extend %complited;
+  color: black;
+}
+
+.complitedChallenge {
+  @extend %complited;
+  color: white;
+}
+
+.title {
+  margin-left: 7px;
+  color: $hover-color;
+  font-family: HelveticaNeueCyr;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1;
+  text-decoration-line: underline;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 11px;
+  }
+}
+
+.btnIcon {
+  margin-left: 7px;
+}
+
+.btn {
+  display: block;
+  align-items: center;
+  margin: 7px auto;
+  color: $secondary-text;
+  background-color: transparent;
+}

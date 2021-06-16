@@ -1,0 +1,263 @@
+@import '../../scss/variables';
+@import '../../scss/global-styles';
+
+.container {
+  @extend %container-styles;
+
+  position: relative;
+  padding-top: 93px;
+  background-color: #fff;
+  overflow: hidden;
+  height: 648px;
+  z-index: 2;
+
+  @media (min-width: 768px) {
+    padding-left: 50px;
+    padding-right: 343px;
+    padding-top: 320px;
+    height: 1024px;
+  }
+
+  @media (min-width: 1280px) {
+    padding-left: 230px;
+    padding-right: 485px;
+    padding-top: 261px;
+    height: 850px;
+  }
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 60px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+
+  letter-spacing: 0.02em;
+
+  color: $hover-color;
+
+  @media (min-width: 768px) {
+    margin-bottom: 50px;
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  @media (min-width: 1280px) {
+    margin-bottom: 70px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+.description {
+  margin-bottom: 30px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 29px;
+
+  letter-spacing: 0.02em;
+
+  color: $card-bg-color;
+  @media (min-width: 768px) {
+    margin-bottom: 25px;
+    font-size: 24px;
+    line-height: 33px;
+  }
+
+  @media (min-width: 1280px) {
+    margin-bottom: 35px;
+    font-size: 36px;
+    line-height: 45px;
+  }
+}
+
+.prompt {
+  margin-bottom: 25px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 45px;
+
+  letter-spacing: 0.02em;
+
+  color: $secondary-text;
+  @media (min-width: 768px) {
+    margin-bottom: 30px;
+    font-size: 18px;
+    line-height: 45px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 24px;
+    line-height: 45px;
+  }
+}
+
+.modals {
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalPrompt {
+  margin-bottom: 15px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+
+  letter-spacing: 0.02em;
+
+  color: $secondary-text;
+
+  @media (max-width: 767px) {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 18px;
+    line-height:25px;
+  }
+}
+
+.form {
+  position: relative;
+
+}
+
+.input {
+  @extend %input;
+  text-align: center;
+  font-family: HelveticaNeueCyr;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 18px;
+  width: 100%;
+
+  &:first-child {
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 768px) {
+    text-align: left;
+    width: 200px;
+    font-size: 20px;
+    line-height: 35px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 24px;
+    line-height: 35px;
+    width: 250px;
+  }
+}
+
+.button {
+  @extend %button;
+  cursor: pointer;
+  display: block;
+  margin: 23px auto 0 auto;
+
+}
+
+.title {
+  color: $hover-color;
+  font-size: 24px;
+  margin-bottom: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+
+
+  @media (min-width: 768px) {
+    margin-bottom: 50px;
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  @media (min-width: 1280px) {
+    margin-bottom: 70px;
+    font-size: 24px;
+    line-height: 24px;
+    // right: 15px;
+    // bottom: 25px;
+  }
+}
+
+.modal_button{
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: HelveticaNeueCyr;
+  color: $hover-color;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 45px;
+
+  text-shadow: $secondary-text 1px 1px 0;
+
+  letter-spacing: 0.02em;
+  background-color: unset;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+    line-height: 45px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 22px;
+    line-height: 45px;
+  }
+}
+
+.back_mob {
+  z-index: -1;
+  display: inline-block;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.back_tablet {
+  z-index: -1;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+  @media screen and (min-width: 1279px) {
+    display: none;
+  }
+}
+
+.back_desc {
+  z-index: -1;
+  @media screen and (max-width: 1279px) {
+    display: none;
+  }
+  @media screen and (min-width: 1280px) {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+
+}

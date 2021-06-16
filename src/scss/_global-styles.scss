@@ -1,0 +1,136 @@
+@import './variables';
+
+//Сбросы стилей
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: HelveticaNeueCyr, Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  // background-color: $bg-color;
+  padding: 0;
+  margin: 0 auto;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+%text-throw {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+%list-throw {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+%link-throw {
+  display: block;
+  text-decoration: none;
+}
+%button {
+  width: 52px;
+  height: 52px;
+
+  color: white;
+  font-family: HelveticaNeueCyr;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  background-color: $button-color;
+  box-shadow: $button-shadow;
+}
+
+%input {
+  display: block;
+  color: $hover-color;
+  border: 0;
+  border-bottom: 1px solid $hover-color;
+  outline: none;
+}
+
+//Стили контейнера
+
+%container-styles {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15px;
+  width: 310px;
+
+  @media (min-width: $tablet) {
+    width: $tablet;
+    padding-left: 50px;
+    padding-right: 49px;
+  }
+  @media (min-width: $desktop) {
+    width: $desktop;
+    padding-left: 71px;
+    padding-right: 72px;
+  }
+}
+
+//Стили карточки
+
+%cardContainer {
+  position: relative;
+  margin: 0;
+  padding: 19px 21px;
+  box-sizing: border-box;
+  width: 290px;
+  height: 260px;
+  box-shadow: $card-shadow;
+  border-radius: 10px;
+
+  @media screen and (min-width: $tablet) {
+    width: 205px;
+    height: 199px;
+  }
+}
+
+//---------wrapper-----------
+
+.wrapperTask {
+  @extend %cardContainer;
+  background: white;
+}
+
+.wrapperChallenge {
+  @extend %cardContainer;
+  background: $card-bg-color;
+}

@@ -1,0 +1,45 @@
+.modal {
+    height: 120vh;
+    width: 100vw;
+    background-color: rgba(255,255,255,0.8);
+    position: fixed;
+    top: -20%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.5s;
+    pointer-events: none;
+    z-index: 100;
+
+    @media (min-width: 768px) {
+        height: 100vh;
+        top: 0;
+        left: 0;
+    }
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 100;
+}
+
+.content {
+    box-shadow: 5px 5px 8px rgba(0,215,255,0.3);
+    border: rgba(0,215,255,0.2) solid 1px;
+    z-index: 100;
+    padding: 30px;
+    background-color: white;
+    width: 350px;
+    border-radius: 10px;
+
+    @media (min-width: 768px) {
+        width: 380px;
+    }
+
+    @media (min-width: 1280px) {
+        width: 420px;
+    }
+}
